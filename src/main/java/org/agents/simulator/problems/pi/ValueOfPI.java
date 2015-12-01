@@ -1,5 +1,7 @@
-package org.agents.simulator.problems;
+package org.agents.simulator.problems.pi;
 
+import org.agents.simulator.problems.Problem;
+import org.agents.simulator.problems.Step;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 

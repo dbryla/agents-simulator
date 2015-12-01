@@ -13,6 +13,7 @@ public abstract class Organization {
 
     static {
         organizations.put(OrganizationType.SLAVERY, new SlaveryOrganization());
+        organizations.put(OrganizationType.HIERARCHY, new HierarchicalOrganization());
     }
 
     public static Organization getOrganizationPerType(OrganizationType type) {

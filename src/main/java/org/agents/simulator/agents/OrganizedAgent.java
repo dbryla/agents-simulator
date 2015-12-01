@@ -7,13 +7,11 @@ import org.agents.simulator.organisations.OrganizationType;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class OrganizedAgent extends Agent{
-
+public class OrganizedAgent extends Agent {
     private static final AtomicInteger agentsCounter = new AtomicInteger(0);
-    private final OrganizationType organization;
-    private final String group;
-    private final String role;
-
+    protected final OrganizationType organization;
+    protected final String group;
+    protected final String role;
     public String getRole() {
         return role;
     }
@@ -41,5 +39,9 @@ public class OrganizedAgent extends Agent{
 
     protected void live() {
         Organization.getOrganizationPerType(organization).communicate(this);
+    }
+
+    public String getGroup() {
+        return group;
     }
 }

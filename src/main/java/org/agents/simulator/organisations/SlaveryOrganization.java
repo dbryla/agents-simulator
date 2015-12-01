@@ -1,11 +1,9 @@
 package org.agents.simulator.organisations;
 
-import madkit.kernel.AgentAddress;
 import madkit.kernel.Message;
-import org.agents.simulator.AgentsManager;
 import org.agents.simulator.Groups;
 import org.agents.simulator.agents.OrganizedAgent;
-import org.agents.simulator.organisations.messages.SlaveryMessage;
+import org.agents.simulator.organisations.messages.CommonMessage;
 import org.agents.simulator.problems.Problem;
 import org.agents.simulator.problems.Step;
 
@@ -26,8 +24,8 @@ public class SlaveryOrganization extends Organization {
         ArrayList<Step> listOfSteps = problem.getListOfSteps();
         if (agent.getRole().equals(MASTER)) {
             List<Message> results = agent.broadcastMessageWithRoleAndWaitForReplies(TYPE.toString(), Groups.NONE.toString(),
-                    SLAVE, new SlaveryMessage(SlaveryMessage.Type.WORK), MASTER, 3000);
-            agent.broadcastMessage(TYPE.toString(), Groups.NONE.toString(), SLAVE, new SlaveryMessage(SlaveryMessage.Type.DIE));
+                    SLAVE, new CommonMessage(CommonMessage.Type.WORK), MASTER, 3000);
+            agent.broadcastMessage(TYPE.toString(), Groups.NONE.toString(), SLAVE, new CommonMessage(CommonMessage.Type.DIE));
             Step step = listOfSteps.get(listOfSteps.size() - 1);
             StringBuilder jsonBuilder = new StringBuilder("{\"data\": [");
             for (Message result : results) {
@@ -41,13 +39,13 @@ public class SlaveryOrganization extends Organization {
         } else {
             boolean dead = false;
             while(true) {
-                SlaveryMessage message = smartCast(agent.waitNextMessage());
+                CommonMessage message = smartCast(agent.waitNextMessage());
                 agent.getLogger().info("Slave got message: " + message.type);
                 switch (message.type) {
                     case WORK:
                         Step step = listOfSteps.get(0);
                         Object result = step.doIt(null);
-                        agent.sendReply(message, new SlaveryMessage(result));
+                        agent.sendReply(message, new CommonMessage(result));
                         break;
                     case DIE:
                         dead = true;
@@ -60,9 +58,9 @@ public class SlaveryOrganization extends Organization {
         }
     }
 
-    private SlaveryMessage smartCast(Message m) {
-        if (m instanceof SlaveryMessage) {
-            return (SlaveryMessage) m;
+    private CommonMessage smartCast(Message m) {
+        if (m instanceof CommonMessage) {
+            return (CommonMessage) m;
         }
         throw new RuntimeException("Unexpected behaviour!");
     }

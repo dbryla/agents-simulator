@@ -2,7 +2,7 @@ package org.agents.simulator.organisations.messages;
 
 import madkit.kernel.Message;
 
-public class SlaveryMessage extends Message{
+public class CommonMessage extends Message{
 
     public final Type type;
     private Object data;
@@ -11,11 +11,11 @@ public class SlaveryMessage extends Message{
         return data;
     }
 
-    public SlaveryMessage(Type type) {
+    public CommonMessage(Type type) {
         this.type = type;
     }
 
-    public SlaveryMessage(Object data) {
+    public CommonMessage(Object data) {
         this(Type.RESULT);
         this.data = data;
     }
