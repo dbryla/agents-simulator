@@ -19,7 +19,7 @@ public class PublicTransport implements Problem {
 
     public PublicTransport() {
         STEPS.add(data -> {
-            //count number of passengers in bus and return it
+            //count number of passengers in a bus and return it
             Bus bus = BusManager.getBusById(Integer.valueOf(data));
             return "{ \"numOfPassengers\": " + bus.getNumOfPassengers() + ", \"capacity\": " + bus.getCapacity() + "}";
         });
