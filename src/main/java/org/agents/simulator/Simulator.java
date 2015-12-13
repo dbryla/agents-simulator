@@ -22,7 +22,6 @@ public class Simulator {
     }
 
     public void start() {
-        System.out.println("Starting agents from organization!");
         for (OrganizedAgent agent : agents) {
             AgentsManager.startAgent(agent);
         }

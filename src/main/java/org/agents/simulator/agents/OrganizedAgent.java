@@ -33,8 +33,8 @@ public class OrganizedAgent extends Agent {
     protected void activate() {
         createGroupIfAbsent(organization.toString(), group);
         requestRole(organization.toString(), group, role);
-        logger.info(String.format("Agent %d activated in organization: %s, group: %s and with role: %s.",
-                id, organization, group, role));
+//        logger.info(String.format("Agent %d activated in organization: %s, group: %s and with role: %s.",
+//                id, organization, group, role));
     }
 
     protected void live() {

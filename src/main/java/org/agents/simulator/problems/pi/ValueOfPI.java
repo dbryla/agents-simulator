@@ -34,16 +34,6 @@ public class ValueOfPI implements Problem {
         STEPS.add(new Step() {
 
             @Override
-            public boolean isFinalStep() {
-                return true;
-            }
-
-            @Override
-            public boolean dependsOnPreviousOutput() {
-                return true;
-            }
-
-            @Override
             public String doIt(String data) {
                 int circleArea = 0;
                 int squareArea = 0;

@@ -14,13 +14,30 @@ public abstract class Organization {
     static {
         organizations.put(OrganizationType.SLAVERY, new SlaveryOrganization());
         organizations.put(OrganizationType.HIERARCHY, new HierarchicalOrganization());
+        organizations.put(OrganizationType.COALITION, new CoalitionOrganization());
     }
 
     public static Organization getOrganizationPerType(OrganizationType type) {
+        if (!organizations.containsKey(type)) {
+            throw new OrganizationNotFoundException(type);
+        }
         return organizations.get(type);
     }
 
     abstract public void communicate(OrganizedAgent agent);
 
     abstract public LinkedList<OrganizedAgent> createAndAssignProblem(Problem problem);
+
+    private static class OrganizationNotFoundException extends RuntimeException {
+        private final OrganizationType organizationType;
+
+        public OrganizationNotFoundException(OrganizationType type) {
+            organizationType = type;
+        }
+
+        @Override
+        public String getMessage() {
+            return "Organization " + organizationType + " not found!";
+        }
+    }
 }
