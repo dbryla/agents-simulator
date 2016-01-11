@@ -15,6 +15,7 @@ public abstract class Organization {
         organizations.put(OrganizationType.SLAVERY, new SlaveryOrganization());
         organizations.put(OrganizationType.HIERARCHY, new HierarchicalOrganization());
         organizations.put(OrganizationType.COALITION, new CoalitionOrganization());
+        organizations.put(OrganizationType.FEDERATION, new FederationalOrganization());
     }
 
     public static Organization getOrganizationPerType(OrganizationType type) {

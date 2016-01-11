@@ -44,4 +44,8 @@ public class OrganizedAgent extends Agent {
     public String getGroup() {
         return group;
     }
+
+    public int getMyId() {
+        return id;
+    }
 }
