@@ -92,7 +92,7 @@ public class HierarchicalOrganization extends Organization {
             boolean dead = false;
             BusDelegateAgent basicAgent = (BusDelegateAgent) agent;
             while (true) {
-                CommonMessage message = smartCast(basicAgent.waitNextMessage());
+                CommonMessage message = smartCast(basicAgent.waitNextMessage(1000));
                 agent.getLogger().info("Basic got message: " + message.type);
                 switch (message.type) {
                     case WORK:

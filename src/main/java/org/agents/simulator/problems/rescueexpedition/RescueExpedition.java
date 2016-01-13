@@ -1,5 +1,6 @@
 package org.agents.simulator.problems.rescueexpedition;
 
+import org.agents.simulator.PseudoNumberGenerator;
 import org.agents.simulator.problems.Problem;
 import org.agents.simulator.problems.Step;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -14,12 +15,14 @@ import java.util.List;
  */
 public class RescueExpedition implements Problem {
     public static final int TEAMS_COUNT = 3;
-    public static final int RESCUERS_PER_TEAM_COUNT = 5;
-    public static final int LOST = 5;
+    public static final int RESCUERS_PER_TEAM_COUNT = PseudoNumberGenerator.nextInt(10);
+    public static final int LOST = PseudoNumberGenerator.nextInt(10);
     private static final ArrayList<Step> STEPS = new ArrayList<>();
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public RescueExpedition() {
+        System.out.println("Setting rescuers per team to " + RESCUERS_PER_TEAM_COUNT);
+        System.out.println("Setting lost person to " + LOST);
         STEPS.add(data -> {
             //try to find lost people in my area
             List<Boolean> area = AreaOfSearches.getAreaOfRescueSearches(new Integer(data));

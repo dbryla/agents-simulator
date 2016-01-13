@@ -14,7 +14,6 @@ import java.util.*;
  */
 public class PublicTransport implements Problem {
     private static final ArrayList<Step> STEPS = new ArrayList<>();
-    private static final Random GENERATOR = new Random();
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public PublicTransport() {

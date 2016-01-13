@@ -1,5 +1,6 @@
 package org.agents.simulator.problems.pi;
 
+import org.agents.simulator.PseudoNumberGenerator;
 import org.agents.simulator.problems.Problem;
 import org.agents.simulator.problems.Step;
 import org.codehaus.jackson.JsonNode;
@@ -8,21 +9,22 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 public class ValueOfPI implements Problem {
     private static final ArrayList<Step> STEPS = new ArrayList<>();
 
-    private static final Random GENERATOR = new Random();
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
+    private static final int POINTS_LIMIT = PseudoNumberGenerator.nextInt(1000000);
+
     static {
+        System.out.println("Setting points limit to " + POINTS_LIMIT);
         STEPS.add(data -> {
             int circleArea = 0;
             int squareArea = 0;
-            for (int i = 0; i < 1000; ++i) {
-                float x = GENERATOR.nextFloat();
-                float y = GENERATOR.nextFloat();
+            for (int i = 0; i < POINTS_LIMIT; ++i) {
+                float x = PseudoNumberGenerator.nextFloat();
+                float y = PseudoNumberGenerator.nextFloat();
                 if (withinCircle(x, y)) {
                     circleArea++;
                 }

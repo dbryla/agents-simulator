@@ -1,5 +1,6 @@
 package org.agents.simulator.organisations;
 
+import org.agents.simulator.PseudoNumberGenerator;
 import org.agents.simulator.agents.OrganizedAgent;
 import org.agents.simulator.problems.Problem;
 import org.agents.simulator.problems.Step;
@@ -35,12 +36,13 @@ public class CoalitionOrganization extends Organization {
     @Override
     public LinkedList<OrganizedAgent> createAndAssignProblem(Problem problem) {
         this.problem = problem;
+        int teamSize = PseudoNumberGenerator.nextInt(10);
         if (problem instanceof PatrolledArea) {
             String cityName = ((PatrolledArea) problem).getCityName();
             City city = CitiesDatabase.getCity(cityName);
+            System.out.println("Number of agents " + teamSize * city.getAreas().size());
             System.out.println("Checking police patrols in " + cityName);
             for (String areaName : city.getAreas()) {
-                int teamSize = 5;
                 for (int i = 0; i < teamSize; ++i) {
                     agents.push(new OrganizedAgent(TYPE, areaName, MEMBER));
                 }
