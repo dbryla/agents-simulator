@@ -1,0 +1,21 @@
+Zeby uruchomic aplikacje nalezy najpierw zawolac polecenie:
+mvn clean install
+
+A nastepnie:
+java -jar target/Simulator.jar NUMER_SYMULACJI
+
+NUMER_SYMULACJI to:
+
+1 - RescueExpedition
+2 - ValueOfPI
+3 - PublicTransport
+4 - PatrolledArea
+
+W przypadku bardziej skomplikowanych przykladow, mozna wyspecyfikowac dodatkowe opcje w pliku konfiguracyjny:
+src/main/resources/config.yml
+
+Ktory jest w formacie YAML (Yet Another Markup Language).
+
+Dla problemu:
+PublicTransport, można określić listę autobusów wraz z minimalnym zatłoczeniem.
+PatrolledArea,  można określić listę dzielnic wraz z liczbą ulic.

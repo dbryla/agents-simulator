@@ -1,0 +1,21 @@
+PublicTransport:
+  -
+    lineNumber: 173
+    minOvercrowd: 30
+  -
+    lineNumber: 144
+    minOvercrowd: 45
+  -
+    lineNumber: 501
+    minOvercrowd: 60
+
+PatrolledArea:
+  -
+    name: "Stare Miasto"
+    streetCounter: 3
+  -
+    name: "Krowodrza"
+    streetCounter: 10
+  -
+    name: "Prądnik Biały"
+    streetCounter: 6
